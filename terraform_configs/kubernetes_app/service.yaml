@@ -1,0 +1,13 @@
+# kubernetes-app/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  type: LoadBalancer # Exposes the service using an AWS Load Balancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
