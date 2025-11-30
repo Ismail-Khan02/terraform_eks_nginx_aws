@@ -5,7 +5,7 @@
     default     = "us-east-1"
     
   }
-
+# Variable for EKS cluster name
 variable "cluster_name" {   
     description = "The name of the EKS cluster"
     type        = string
