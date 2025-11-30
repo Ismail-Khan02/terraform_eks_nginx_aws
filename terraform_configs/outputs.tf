@@ -5,11 +5,6 @@ output "cluster_name" {
   
 }
 
-output "kubeconfig" {
-  description = "Kubeconfig file content to access the EKS cluster"
-  value       = module.eks.kubeconfig
-}
-
 output "vpc_id" {
   description = "The ID of the VPC"
   value       = module.vpc.vpc_id
