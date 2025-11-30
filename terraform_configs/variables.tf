@@ -1,4 +1,4 @@
-# variable.terraform 
+# Variable definitions for AWS region and EKS cluster name
   variable "aws_region" {   
     description = "The AWS region to deploy resources in"
     type        = string

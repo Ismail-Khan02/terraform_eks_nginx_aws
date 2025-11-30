@@ -1,4 +1,4 @@
-# Use the EKS module to create the cluster and node group
+# EKS Cluster Configuration
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
@@ -6,16 +6,23 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = "1.29"
 
+# --- Network Configuration ---
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
-  enable_cluster_creator_admin_permissions = true   
-  
+# --- Cluster Access ---
+
+  enable_cluster_creator_admin_permissions = true
+
+# --- Cluster Networking ---
+  cluster_endpoint_public_access = true
+
+# --- Worker Nodes ---
   eks_managed_node_groups = {
     general = {
       min_size     = 1
-      max_size     = 3
-      desired_size = 2
+      max_size     = 2
+      desired_size = 1
       instance_types = ["t3.medium"]
     }
   }

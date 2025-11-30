@@ -1,4 +1,4 @@
-# Use the VPC module to create networking resources
+# Use the VPC module to create a VPC for the EKS cluster
 module "vpc" {  
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 4.0"
@@ -14,8 +14,11 @@ module "vpc" {
 
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/elb" = "1" 
   }
+
   private_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb" = "1" 
   }
 }

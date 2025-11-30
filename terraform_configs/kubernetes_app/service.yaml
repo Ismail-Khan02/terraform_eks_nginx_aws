@@ -1,12 +1,14 @@
-# kubernetes-app/service.yaml
+# service.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb  
 spec:
   selector:
     app: nginx
-  type: LoadBalancer # Exposes the service using an AWS Load Balancer
+  type: LoadBalancer 
   ports:
     - protocol: TCP
       port: 80
