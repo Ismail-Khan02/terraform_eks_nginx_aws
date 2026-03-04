@@ -6,12 +6,14 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = "1.29"
 
-  create_iam_role = false
-  iam_role_arn    = "arn:aws:iam::533267396259:role/my-terraform-eks-cluster-cluster-20260304123555128600000003"
+  create_iam_role = true
+  
+  # Disable encryption to avoid IAM policy creation/deletion
+  create_kms_key            = true
 
-# Disable encryption to avoid IAM policy creation/deletion
-  create_kms_key = false
-  cluster_encryption_config = {}
+  # --- CloudWatch Log Group ---
+  create_cloudwatch_log_group = true
+  cluster_enabled_log_types   = ["api", "audit", "authenticator"]
 
   # --- Network Configuration ---
   vpc_id     = module.vpc.vpc_id
@@ -23,7 +25,8 @@ module "eks" {
 
   # --- Cluster Networking ---
   cluster_endpoint_public_access = true
-
+  cluster_endpoint_public_access_cidrs = [local.my_cidr]
+  cluster_endpoint_private_access      = true
   # --- Worker Nodes ---
   eks_managed_node_groups = {
     general = {
