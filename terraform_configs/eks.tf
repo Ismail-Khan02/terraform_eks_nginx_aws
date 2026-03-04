@@ -6,6 +6,13 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = "1.29"
 
+  create_iam_role = false
+  iam_role_arn    = "arn:aws:iam::533267396259:role/my-terraform-eks-cluster-cluster-20260304123555128600000003"
+
+# Disable encryption to avoid IAM policy creation/deletion
+  create_kms_key = false
+  cluster_encryption_config = {}
+
   # --- Network Configuration ---
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
