@@ -8,7 +8,6 @@ module "eks" {
 
   create_iam_role = true
   
-  # Disable encryption to avoid IAM policy creation/deletion
   create_kms_key            = true
 
   # --- CloudWatch Log Group ---
