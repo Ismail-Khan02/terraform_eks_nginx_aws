@@ -1,6 +1,6 @@
 # Configure the Kubernetes provider to use the EKS cluster
 data "aws_eks_cluster" "eks_cluster" {
-  name = module.eks.cluster_name
+  name       = module.eks.cluster_name
   depends_on = [module.eks.cluster_name]
 }
 
