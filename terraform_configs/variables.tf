@@ -1,14 +1,14 @@
 # Variable definitions for AWS region and EKS cluster name
-  variable "aws_region" {   
-    description = "The AWS region to deploy resources in"
-    type        = string
-    default     = "us-east-1"
-    
-  }
+variable "aws_region" {
+  description = "The AWS region to deploy resources in"
+  type        = string
+  default     = "us-east-1"
+
+}
 # Variable for EKS cluster name
-variable "cluster_name" {   
-    description = "The name of the EKS cluster"
-    type        = string
-    default     = "my-terraform-eks-cluster"
-  }
-  
+variable "cluster_name" {
+  description = "The name of the EKS cluster"
+  type        = string
+  default     = "my-terraform-eks-cluster"
+}
+

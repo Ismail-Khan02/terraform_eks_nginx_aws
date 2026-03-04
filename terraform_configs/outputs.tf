@@ -1,8 +1,8 @@
 # Outputs for EKS Cluster and VPC
-output "cluster_name" { 
+output "cluster_name" {
   description = "The name of the EKS cluster"
   value       = module.eks.cluster_name
-  
+
 }
 # Output the VPC ID
 output "vpc_id" {

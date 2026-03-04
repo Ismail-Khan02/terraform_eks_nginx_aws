@@ -5,7 +5,7 @@ data "aws_eks_cluster" "eks_cluster" {
 
 # Get authentication token for the EKS cluster
 data "aws_eks_cluster_auth" "eks_cluster" {
-    name = module.eks.cluster_name
+  name = module.eks.cluster_name
 }
 # Configure the Kubernetes provider to use the EKS cluster
 provider "kubernetes" {
